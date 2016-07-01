@@ -1,13 +1,13 @@
-angular.module('testService', [])//Declaramos el modulo
-	.factory('testRequest', function($http) { //declaramos la factory
-		var path = "http://localhost:8000/api/";//API path
+angular.module('testService', [])
+	.factory('testRequest', function($http) { 
+		var path = "http://localhost:8000/api/";
 		return {
 			//Login
-			causes : function(){ //Retornara la lista de posts
-				global = $http.get(path+'causes.json');
+			causes : function(){ 
+				global = $http.get(path+'causes');
 				return global;
 			},
-			cause : function(id){ //retornara el post por el id
+			cause : function(id){ 
 				global = $http.get(path+'causes/'+id);
 				return global;	
 			}	

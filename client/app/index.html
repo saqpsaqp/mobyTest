@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html ng-app='myApp'>
 <head>
-	<title></title>
+	<title>Cause of Death in NYC</title>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<!--Controllers-->
 	<script type="text/javascript" src="controllers/testController.js"></script>
 	<!--Services-->
 	<script type="text/javascript" src="services/testService.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body ng-app='myApp' ng-controller="testController">
-	{{ name }}
 	<input type="submit" value="Todos las causas" ng-click="getAllCauses()"/>
 	<input type="submit" value="Una Causa" ng-click="getCause()"/>
-	<input type="text" ng-model="cause_id" placeholder="inserte el id del post"/>
+	<input type="text" ng-model="cause_id" placeholder="inserte el id de la causa"/>
 	<div ng-if="causes.exist==1">
-		<h1>Lista de Posts</h1>
-		<div ng-repeat="p in causes">
-			<pre>
-				<h5> Post # {{p.id}}</h5>
-				<h2>{{p.year}}</h2>
-				<p>{{p.cause}}</p>
-			</pre>
-			<hr/>
-		</div>
+		<h1>Lista de Causas</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Year</th>
+					<th>Ethnicity</th>
+					<th>Sex</th>
+					<th>Cause description</th>
+					<th>Count</th>
+					<th>Percent</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr ng-repeat="p in causes">
+					<td>{{p.year}}</td>
+					<td>{{p.ethnicity}}</td>
+					<td>{{p.sex}}</td>
+					<td>{{p.cause}}</td>
+					<td>{{p.count}}</td>
+					<td>{{p.percent}}</td>
+				</tr>
+			</tbody>
+		</table>		
 	</div>
 	<div ng-if="unCause.exist==1">
-		<h1>Un solo post</h1>
+		<h1>Una sola causa</h1>
 		<pre>
-			<h5> Post # {{unCause.id}}</h5>
-			<h2>{{unCause.year}}</h2>
+			<h5> Cause # {{unCause.id}}</h5>
+			<h4>{{unCause.cause}}</h4>
+			<p>{{unCause.year}}</p>
+			<p>{{unCause.ethnicity}}</p>
+			<p>{{unCause.sex}}</p>
 			<p>{{unCause.cause}}</p>
+			<p>{{unCause.count}}</p>
+			<p>{{unCause.percent}}</p>
 		</pre>
 		<hr/>
 	</div>
+
+
 </body>
 </html>
